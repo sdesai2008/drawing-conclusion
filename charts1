@@ -1,0 +1,47 @@
+Drawing Conclusions
+Use the space below to address questions on datasets clean_08.csv and clean_18.csv. You should've created these data files in the previous section: Fixing Data Types Pt 3.
+
+# load datasets
+import pandas as pd
+import numpy as np
+% matplotlib inline
+df_08 = pd.read_csv('clean_08.csv')
+df_18 = pd.read_csv('clean_18.csv')
+Q1: Are more unique models using alternative sources of fuel? By how much?
+df_08.hist("fuel")
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-54-d0fce4dc5fa0> in <module>()
+----> 1 df_08.hist("fuel")
+
+/opt/conda/lib/python3.6/site-packages/pandas/plotting/_core.py in hist_frame(data, column, by, grid, xlabelsize, xrot, ylabelsize, yrot, ax, sharex, sharey, figsize, layout, bins, **kwds)
+   2406     fig, axes = _subplots(naxes=naxes, ax=ax, squeeze=False,
+   2407                           sharex=sharex, sharey=sharey, figsize=figsize,
+-> 2408                           layout=layout)
+   2409     _axes = _flatten(axes)
+   2410 
+
+/opt/conda/lib/python3.6/site-packages/pandas/plotting/_tools.py in _subplots(naxes, sharex, sharey, squeeze, subplot_kw, ax, layout, layout_type, **fig_kw)
+    236 
+    237     # Create first subplot separately, so we can share it if requested
+--> 238     ax0 = fig.add_subplot(nrows, ncols, 1, **subplot_kw)
+    239 
+    240     if sharex:
+
+/opt/conda/lib/python3.6/site-packages/matplotlib/figure.py in add_subplot(self, *args, **kwargs)
+   1068                     self._axstack.remove(ax)
+   1069 
+-> 1070             a = subplot_class_factory(projection_class)(self, *args, **kwargs)
+   1071 
+   1072         self._axstack.add(key, a)
+
+/opt/conda/lib/python3.6/site-packages/matplotlib/axes/_subplots.py in __init__(self, fig, *args, **kwargs)
+     62                     raise ValueError(
+     63                         "num must be 1 <= num <= {maxn}, not {num}".format(
+---> 64                             maxn=rows*cols, num=num))
+     65                 self._subplotspec = GridSpec(rows, cols)[int(num) - 1]
+     66                 # num - 1 for converting from MATLAB to python indexing
+
+ValueError: num must be 1 <= num <= 0, not 1
+
+<matplotlib.figure.Figure at 0x7fd392cca748>
